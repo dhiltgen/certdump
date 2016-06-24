@@ -1,4 +1,4 @@
-# cert-disco
+# certdump
 
 This simple little utility dumps out some useful information from X509 certificates.
 
@@ -21,3 +21,9 @@ docker run --rm \
     -v ucp-node-certs:/ucp-node-certs \
     dhiltgen/certdump
 ```
+
+## Common failure scenarios to look out for
+
+* Due to clock skew or just generally having clocks set wrong, the cert timestamps may be out-of-whack.
+* Regenerated root CAs.  If the root CAs have been regenerated, and old certs are still lying around they
+  may casually look OK, but not be trusted.  You can cross-reference the Issuer ID's to make sure they match.
