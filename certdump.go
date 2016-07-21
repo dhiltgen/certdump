@@ -79,7 +79,11 @@ func dumpCert(label string, data []byte) {
 }
 
 func scan() {
-	candidates, _ := filepath.Glob("/*/*.pem")
+	pem_candidates, _ := filepath.Glob("/*/*.pem")
+	crt_candidates, _ := filepath.Glob("/*/*.crt")
+	key_candidates, _ := filepath.Glob("/*/*.key")
+	candidates := append(pem_candidates, crt_candidates...)
+	candidates = append(candidates, key_candidates...)
 	log.Infof("Candidates: %v", candidates)
 	for _, filename := range candidates {
 		log.Infof("Loading: %s", filename)

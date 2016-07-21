@@ -19,6 +19,7 @@ docker run --rm \
     -v ucp-controller-server-certs:/ucp-controller-server-certs \
     -v ucp-kv-certs:/ucp-kv-certs \
     -v ucp-node-certs:/ucp-node-certs \
+	-v /var/lib/docker/swarm/certificates:/swarm \
     dhiltgen/certdump
 ```
 
